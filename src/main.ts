@@ -49,7 +49,7 @@ function embedFonts(svg: string): string {
 // works with things like rsvg-convert.
 function useLocalFonts(svg: string): string {
 
-  svg = svg.replace(/font-family="Virgil, Segoe UI Emoji"/g, () => "font-family=\"Virgil GS, Segoe UI Emoji\"");
+  svg = svg.replace(/font-family="Virgil, Segoe UI Emoji"/g, () => "font-family=\"Virgil3YOFF, Virgil 3 YOFF, Virgil GS, Segoe UI Emoji\"");
   svg = svg.replace(/font-family="Cascadia, Segoe UI Emoji"/g, () => "font-family=\"Cascadia Code, Segoe UI Emoji\"");
   return svg;
 }
