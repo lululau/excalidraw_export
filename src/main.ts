@@ -40,9 +40,8 @@ function embedFonts(svg: string): string {
   const virgilUri = "data:application/x-font-woff2;base64," + CASCADIA_BASE64;
   const cascadiaUri = "data:application/x-font-woff2;base64," + VIRGIL_BASE64;
 
-  // Note we have to use a function here because replaceAll() is broken.
-  svg = svg.replaceAll("https://excalidraw.com/Virgil.woff2", () => virgilUri);
-  svg = svg.replaceAll("https://excalidraw.com/Cascadia.woff2", () => cascadiaUri);
+  svg = svg.replace(/https:\/\/excalidraw.com\/Virgil.woff2/g, () => virgilUri);
+  svg = svg.replace(/https:\/\/excalidraw.com\/Cascadia.woff2/g, () => cascadiaUri);
   return svg;
 }
 
@@ -50,9 +49,8 @@ function embedFonts(svg: string): string {
 // works with things like rsvg-convert.
 function useLocalFonts(svg: string): string {
 
-  // Note we have to use a function here because replaceAll() is broken.
-  svg = svg.replaceAll("font-family=\"Virgil, Segoe UI Emoji\"", () => "font-family=\"Virgil GS, Segoe UI Emoji\"");
-  svg = svg.replaceAll("font-family=\"Cascadia, Segoe UI Emoji\"", () => "font-family=\"Cascadia Code, Segoe UI Emoji\"");
+  svg = svg.replace(/font-family="Virgil, Segoe UI Emoji"/g, () => "font-family=\"Virgil GS, Segoe UI Emoji\"");
+  svg = svg.replace(/font-family="Cascadia, Segoe UI Emoji"/g, () => "font-family=\"Cascadia Code, Segoe UI Emoji\"");
   return svg;
 }
 

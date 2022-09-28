@@ -14,8 +14,8 @@ const virgil = fs.readFileSync("src/Virgil.woff2", { encoding: "base64" });
 
 // Note we have to use a function as the second argument because when the JS
 // people managed to finally add `.replaceAll()` they fucked it right up.
-mainJs = mainJs.replaceAll("EXCALIDRAW_UTILS_SOURCE = \"\"", () => `EXCALIDRAW_UTILS_SOURCE = ${JSON.stringify(excalidrawUtils)}`);
-mainJs = mainJs.replaceAll("CASCADIA_BASE64 = \"\"", () => `CASCADIA_BASE64 = ${JSON.stringify(cascadia)}`);
-mainJs = mainJs.replaceAll("VIRGIL_BASE64 = \"\"", () => `VIRGIL_BASE64 = ${JSON.stringify(virgil)}`);
+mainJs = mainJs.replace(/EXCALIDRAW_UTILS_SOURCE = ""/g, () => `EXCALIDRAW_UTILS_SOURCE = ${JSON.stringify(excalidrawUtils)}`);
+mainJs = mainJs.replace(/CASCADIA_BASE64 = ""/g, () => `CASCADIA_BASE64 = ${JSON.stringify(cascadia)}`);
+mainJs = mainJs.replace(/VIRGIL_BASE64 = ""/g, () => `VIRGIL_BASE64 = ${JSON.stringify(virgil)}`);
 
 fs.writeFileSync("dist/main.js", mainJs, { encoding: "utf-8" });
